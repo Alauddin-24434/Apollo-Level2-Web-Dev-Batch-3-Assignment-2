@@ -1,3 +1,4 @@
+// product variant 
 export type Variant = {
     type: string;
     value: string;
