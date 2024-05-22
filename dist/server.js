@@ -19,13 +19,27 @@ const config_1 = __importDefault(require("./config"));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            // Connect to MongoDB
             yield mongoose_1.default.connect(config_1.default.db_url);
-            app_1.default.listen(config_1.default.port, () => {
-                console.log(`Example app listening on port ${config_1.default.port}`);
+            // Start the server
+            const server = app_1.default.listen(config_1.default.port, () => {
+                console.log(`E-commerce app listening on port ${config_1.default.port}`);
+            });
+            // Handle server disconnection
+            server.on('disconnect', () => {
+                console.error('Server disconnected');
+                process.exit(1);
+            });
+            // Handle unhandled promise rejections
+            process.on('unhandledRejection', (error) => {
+                console.error('Unhandled Promise Rejection:', error);
+                process.exit(1);
             });
         }
         catch (err) {
-            console.log(err);
+            // Handle database connection errors
+            console.error('Error connecting to the database:', err);
+            process.exit(1);
         }
     });
 }

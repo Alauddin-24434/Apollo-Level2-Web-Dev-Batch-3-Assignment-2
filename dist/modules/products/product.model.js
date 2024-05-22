@@ -16,7 +16,7 @@ const productSchema = new mongoose_1.Schema({
     price: { type: Number, required: true },
     category: { type: String, required: true },
     tags: { type: [String], required: true }, // Array of strings
-    variants: [variantSchema],
-    inventory: inventorySchema, // Embedded inventory schema
+    variants: { type: [variantSchema], required: true }, // Array of Variant, required
+    inventory: { type: inventorySchema, required: true } // Inventory, required
 });
 exports.ProductModel = (0, mongoose_1.model)('Product', productSchema);
