@@ -74,8 +74,8 @@ const deleteProductById = async (productId: string | Types.ObjectId) => {
     return deletedProduct;
   } catch (error) {
     // Handle errors
-    console.error("Error occurred while deleting the product:", error);
-    throw error;
+    // console.error("Error occurred while deleting the product:", error);
+    // throw error;
   }
 };
 

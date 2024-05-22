@@ -35,7 +35,7 @@ const createProduct = async (req: Request, res: Response) => {
       });
     } catch (error) {
       // Handle errors
-      console.error("Error occurred while creating the product:", error);
+    //   console.error("Error occurred while creating the product:", error);
   
       // Determine the error type
       let errorMessage = "An unexpected error occurred";
@@ -90,7 +90,7 @@ const getAllProduct = async (req: Request, res: Response) => {
      
     } catch (error) {
       // Handle errors
-      console.error("Error occurred while fetching products:", error);
+    //   console.error("Error occurred while fetching products:", error);
   
       // Send the error response
       res.status(500).json({
@@ -125,7 +125,7 @@ const getProductById = async (req: Request, res: Response) => {
     });
   } catch (error) {
     // Handle errors
-    console.error("Error occurred while fetching the product:", error);
+    // console.error("Error occurred while fetching the product:", error);
 
     // Send the error response
     res.status(500).json({
