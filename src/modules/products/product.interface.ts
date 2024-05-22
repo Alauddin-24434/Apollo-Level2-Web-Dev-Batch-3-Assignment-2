@@ -10,6 +10,7 @@ export type Inventory = {
     inStock: boolean;
 };
 
+// product interface
 export type Product = {
     name: string;
     description: string;
