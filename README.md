@@ -19,10 +19,10 @@ DATABASE_URL=mongodb+srv://practise:244346627@cluster0.8ldebrq.mongodb.net/assig
 
 ### 4. Start server various way:
  
-<!-- 1.  ts-node-dev way  -->
+<p>1 .Use ts-node-dev </p> 
 <pre><code>npm run start:dev</code></pre>
-
-<!-- 2. node way  -->
+Or 
+<p>2 .Use node</p> 
 <pre><code>npm run start</code></pre>
 
 # Additional Instructions:
