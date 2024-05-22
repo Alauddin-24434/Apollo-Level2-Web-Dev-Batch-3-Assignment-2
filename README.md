@@ -1,4 +1,4 @@
-# E-commerce-backend 
+# If you want to run E-commerce-backend locally =>
 ## Getting Started
 ### 1. Clone the E-commerce-backend Repository 
 
@@ -24,3 +24,13 @@ DATABASE_URL=mongodb+srv://practise:244346627@cluster0.8ldebrq.mongodb.net/assig
 
 <!-- 2. node way  -->
 <pre><code>npm run start</code></pre>
+
+# Additional Instructions:
+
+### 1. Deployment Link: https://e-commerce-backend-topaz.vercel.app/
+
+### 2. Zod: The application uses Zod for schema validation. Make sure to check the Zod documentation for more details.
+
+### 3. ESLint: ESLint is configured for this project. <pre><code>Run npm run lint</code></pre>  to check for linting errors.
+
+### 4. ESLint fix : <pre><code>Run npm run lint:fix</code></pre>
