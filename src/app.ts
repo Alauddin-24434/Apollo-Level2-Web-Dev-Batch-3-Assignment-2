@@ -20,7 +20,7 @@ app.use("/api/orders", OrderRoutes)
 
 // its root endpoint
 app.get("/", (req: Request, res: Response) => {
-  res.send("Welcome to e-commerce-server");
+  res.send("Welcome to e-commerce-server on port 5000");
 });
 
 

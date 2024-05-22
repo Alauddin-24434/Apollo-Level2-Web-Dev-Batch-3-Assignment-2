@@ -20,6 +20,6 @@ app.use("/api/products", product_route_1.ProductRoutes);
 app.use("/api/orders", order_route_1.OrderRoutes);
 // its root endpoint
 app.get("/", (req, res) => {
-    res.send("Welcome to e-commerce-server");
+    res.send("Welcome to e-commerce-server on port 5000");
 });
 exports.default = app;
