@@ -68,8 +68,8 @@ const deleteProductById = (productId) => __awaiter(void 0, void 0, void 0, funct
     }
     catch (error) {
         // Handle errors
-        console.error("Error occurred while deleting the product:", error);
-        throw error;
+        // console.error("Error occurred while deleting the product:", error);
+        // throw error;
     }
 });
 // Export an object containing all the service functions

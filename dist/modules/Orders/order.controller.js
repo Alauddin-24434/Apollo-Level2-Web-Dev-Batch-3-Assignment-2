@@ -51,7 +51,7 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
     catch (error) {
-        console.error("Error occurred while creating the order:", error);
+        // console.error("Error occurred while creating the order:", error);
         let errorMessage = "Product not found";
         if (error instanceof zod_1.z.ZodError) {
             errorMessage = "Validation failed: " + error.errors.map(e => e.message).join(", ");
@@ -62,55 +62,9 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 });
-// const createOrder = async (req: Request, res: Response) => {
-//   try {
-//     // Extract the order data from the request body
-//     const order = req.body;
-//     // Validate the order data using the Zod validation schema
-//     const zodParseData = OrderValidationZodSchema.parse(order);
-//     // Validate the productId to ensure it's a valid MongoDB ObjectId
-//     if (!mongoose.Types.ObjectId.isValid(zodParseData.productId)) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "Invalid product ID",
-//       });
-//     }
-//     // Check if the productId exists in the product collection
-//     const productExists = await ProductModel.findById(zodParseData.productId);
-//     if (!productExists) {
-//       return res.status(404).json({
-//         success: false,
-//         message: `Product with ID '${zodParseData.productId}' does not exist.`,
-//       });
-//     }
-//     // Call the service method to create the order
-//     const orderedResult = await OrderService.createOrder(zodParseData);
-//     // Send a success response if the order is created successfully
-//     res.status(201).json({
-//       success: true,
-//       message: "Order created successfully!",
-//       data: orderedResult,
-//     });
-//   } catch (error) {
-//     // Handle validation errors or any other errors that occur during order creation
-//     console.error("Error occurred while creating the order:", error);
-//     let errorMessage = "An unexpected error occurred";
-//     if (error instanceof z.ZodError) {
-//       errorMessage =
-//         "Validation failed: " + error.errors.map((e) => e.message).join(", ");
-//     }
-//     // Send an error response with the appropriate error message
-//     res.status(400).json({
-//       success: false,
-//       message: errorMessage,
-//       // Optional: include the actual error message for debugging purposes (if needed)
-//     });
-//   }
-// };
 const getAllOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const email = req.query.email;
-        console.log(email);
         const orderedResult = yield order_services_1.OrderService.getAllOrder(email);
         if (!orderedResult.length && email) {
             return res.json({
@@ -135,7 +89,7 @@ const getAllOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     catch (error) {
         // Handle errors
-        console.error("Error occurred while fetching products:", error);
+        //  console.error("Error occurred while fetching products:", error);
         // Send the error response
         res.status(500).json({
             success: false,

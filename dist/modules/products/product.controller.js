@@ -39,7 +39,7 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
     catch (error) {
         // Handle errors
-        console.error("Error occurred while creating the product:", error);
+        //   console.error("Error occurred while creating the product:", error);
         // Determine the error type
         let errorMessage = "An unexpected error occurred";
         if (error instanceof zod_1.z.ZodError) {
@@ -86,7 +86,7 @@ const getAllProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
     catch (error) {
         // Handle errors
-        console.error("Error occurred while fetching products:", error);
+        //   console.error("Error occurred while fetching products:", error);
         // Send the error response
         res.status(500).json({
             success: false,
@@ -116,7 +116,7 @@ const getProductById = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
     catch (error) {
         // Handle errors
-        console.error("Error occurred while fetching the product:", error);
+        // console.error("Error occurred while fetching the product:", error);
         // Send the error response
         res.status(500).json({
             success: false,

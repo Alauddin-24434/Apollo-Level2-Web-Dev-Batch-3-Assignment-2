@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { Order } from "./order.interface";
 
-
+// orderschema 
 const orderSchema= new Schema <Order>({
     email: {type: String, required:true},
     productId:{type: String, required:true},
@@ -10,6 +10,6 @@ const orderSchema= new Schema <Order>({
    
 }, {versionKey:false});
 
-
+// expport OrderMoldel
 export const OrderModel=model<Order>('Order', orderSchema)
 
