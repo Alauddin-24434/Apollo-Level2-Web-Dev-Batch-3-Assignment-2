@@ -1,4 +1,5 @@
 // Import the Product interface, which defines the structure of a product object
+import { Types } from "mongoose";
 import { Product } from "./product.interface";
 
 // Import the ProductModel, which is the Mongoose model used to interact with the products collection in the database
@@ -8,11 +9,14 @@ import { ProductModel } from "./product.model";
 // Accepts a product object of type Product
 // Returns the created product object
 const createProduct = async (product: Product) => {
+  // Check if a product with the same name already exists
+ 
   // Create a new product in the database using the ProductModel
   const result = await ProductModel.create(product);
   // Return the created product object
   return result;
 };
+
 
 // Function to get all products
 // Returns an array of all product objects in the database
@@ -43,7 +47,7 @@ const getAllProduct = async (searchTerm: string) => {
 // Function to get a product by its ID
 // Accepts an id of type String
 // Returns the product object with the matching ID, or null if not found
-const getProductById = async (id: String) => {
+const getProductById = async (id: string) => {
   // Find the product by ID in the database using the ProductModel
   const result = await ProductModel.findById(id);
   // Return the found product object or null
@@ -53,7 +57,7 @@ const getProductById = async (id: String) => {
 // Function to update a product by its ID
 // Accepts an id of type String and an updateData object of type Partial<Product>
 // Returns the updated product object
-const productUpdateById = async (id: String, updateData: Partial<Product>) => {
+const productUpdateById = async (id: string, updateData: Partial<Product>) => {
   // Update the product in the database by its ID using the ProductModel
   // $set operator is used to update only the fields provided in the updateData object
   await ProductModel.updateOne({ _id: id }, { $set: updateData });
@@ -64,10 +68,16 @@ const productUpdateById = async (id: String, updateData: Partial<Product>) => {
   return updatedProduct;
 };
 
-const deleteProductById= async (id:String)=>{
-const deletedProduct= await ProductModel.deleteOne(id)
-return deletedProduct;
-}
+const deleteProductById = async (productId: string | Types.ObjectId) => {
+  try {
+    const deletedProduct = await ProductModel.deleteOne({ _id: productId });
+    return deletedProduct;
+  } catch (error) {
+    // Handle errors
+    console.error("Error occurred while deleting the product:", error);
+    throw error;
+  }
+};
 
 // Export an object containing all the service functions
 // These functions can be imported and used in other parts of the application

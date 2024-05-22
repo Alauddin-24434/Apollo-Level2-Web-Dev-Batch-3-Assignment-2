@@ -13,15 +13,25 @@ exports.ProductControlerrs = void 0;
 const product_services_1 = require("./product.services");
 const productValidationZodSchema_1 = require("./productValidationZodSchema");
 const zod_1 = require("zod");
+const product_model_1 = require("./product.model");
 const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const productData = req.body;
-        // Parse and validate the incoming data
+        // Parse and validate the incoming data using Zod
         const zodParseData = productValidationZodSchema_1.ProductValidationSchema.parse(productData);
+        // Check if a product with the same name already exists
+        const existingProduct = yield product_model_1.ProductModel.findOne({ name: zodParseData.name });
+        // If a product with the same name exists, return a meaningful message
+        if (existingProduct) {
+            return res.status(400).json({
+                success: false,
+                message: `A product with the name '${zodParseData.name}' already exists.`,
+            });
+        }
         // Call the service method to create the product
         const result = yield product_services_1.ProductServices.createProduct(zodParseData);
         // Send the success response
-        res.json({
+        res.status(201).json({
             success: true,
             message: "Product is created successfully!",
             data: result,
@@ -34,13 +44,14 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         let errorMessage = "An unexpected error occurred";
         if (error instanceof zod_1.z.ZodError) {
             // Handle Zod validation errors
-            errorMessage = "Validation failed";
+            errorMessage = "Validation failed: " + error.errors.map(e => e.message).join(", ");
         }
         // Send the error response
         res.status(500).json({
             success: false,
             message: errorMessage,
-            //   error: error.message
+            // Optional: include the actual error message for debugging purposes (if needed)
+            // error: error.message
         });
     }
 });

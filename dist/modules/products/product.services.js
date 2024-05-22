@@ -16,6 +16,7 @@ const product_model_1 = require("./product.model");
 // Accepts a product object of type Product
 // Returns the created product object
 const createProduct = (product) => __awaiter(void 0, void 0, void 0, function* () {
+    // Check if a product with the same name already exists
     // Create a new product in the database using the ProductModel
     const result = yield product_model_1.ProductModel.create(product);
     // Return the created product object
@@ -60,9 +61,16 @@ const productUpdateById = (id, updateData) => __awaiter(void 0, void 0, void 0, 
     // Return the updated product object
     return updatedProduct;
 });
-const deleteProductById = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const deletedProduct = yield product_model_1.ProductModel.deleteOne(id);
-    return deletedProduct;
+const deleteProductById = (productId) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const deletedProduct = yield product_model_1.ProductModel.deleteOne({ _id: productId });
+        return deletedProduct;
+    }
+    catch (error) {
+        // Handle errors
+        console.error("Error occurred while deleting the product:", error);
+        throw error;
+    }
 });
 // Export an object containing all the service functions
 // These functions can be imported and used in other parts of the application

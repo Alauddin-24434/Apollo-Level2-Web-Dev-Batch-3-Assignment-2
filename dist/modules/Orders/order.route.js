@@ -7,6 +7,6 @@ exports.OrderRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const order_controller_1 = require("./order.controller");
 const router = express_1.default.Router();
-router.post('/', order_controller_1.OrderControler.createOrder);
-router.get('/');
+router.post('/', order_controller_1.OrderController.createOrder);
+router.get('/', order_controller_1.OrderController.getAllOrder);
 exports.OrderRoutes = router;

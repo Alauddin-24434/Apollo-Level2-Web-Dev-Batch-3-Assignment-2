@@ -7,7 +7,8 @@ const orderSchema= new Schema <Order>({
     productId:{type: String, required:true},
     price: {type: Number, required:true},
     quantity: {type: Number, required:true},
-});
+   
+}, {versionKey:false});
 
 
 export const OrderModel=model<Order>('Order', orderSchema)
