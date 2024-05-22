@@ -160,11 +160,13 @@ const deleteProductById = (req, res) => __awaiter(void 0, void 0, void 0, functi
             message: "Product not found or no delete",
         });
     }
-    res.status(200).json({
-        success: true,
-        message: "Product deleted successfully!",
-        data: deletedProduct,
-    });
+    else {
+        res.status(200).json({
+            success: true,
+            message: "Product deleted successfully!",
+            data: null,
+        });
+    }
 });
 exports.ProductControlerrs = {
     createProduct,

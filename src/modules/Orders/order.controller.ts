@@ -52,7 +52,7 @@ const createOrder = async (req: Request, res: Response) => {
     } catch (error) {
         // console.error("Error occurred while creating the order:", error);
 
-        let errorMessage = "Product not found";
+        let errorMessage = "Order not found";
 
         if (error instanceof z.ZodError) {
             errorMessage = "Validation failed: " + error.errors.map(e => e.message).join(", ");

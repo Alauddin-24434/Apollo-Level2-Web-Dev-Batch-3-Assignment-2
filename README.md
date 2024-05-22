@@ -22,7 +22,10 @@ DATABASE_URL=mongodb+srv://practise:244346627@cluster0.8ldebrq.mongodb.net/assig
 <p>1 .Use ts-node-dev </p> 
 <pre><code>npm run start:dev</code></pre>
 Or 
-<p>2 .Use node</p> 
+
+### Use node before npm run build,  after npm run start
+
+<pre><code>npm run buld </code></pre>
 <pre><code>npm run start</code></pre>
 
 # Additional Instructions:

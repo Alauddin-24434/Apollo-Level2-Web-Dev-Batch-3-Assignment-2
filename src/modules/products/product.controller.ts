@@ -176,13 +176,14 @@ const deleteProductById = async (req: Request, res: Response) => {
       success: false,
       message: "Product not found or no delete",
     });
+  }else{
+    res.status(200).json({
+        success: true,
+        message: "Product deleted successfully!",
+        data: null,
+      });
   }
 
-  res.status(200).json({
-    success: true,
-    message: "Product deleted successfully!",
-    data: deletedProduct,
-  });
 };
 
 export const ProductControlerrs = {

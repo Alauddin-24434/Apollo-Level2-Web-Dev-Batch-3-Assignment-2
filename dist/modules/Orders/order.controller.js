@@ -52,7 +52,7 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     catch (error) {
         // console.error("Error occurred while creating the order:", error);
-        let errorMessage = "Product not found";
+        let errorMessage = "Order not found";
         if (error instanceof zod_1.z.ZodError) {
             errorMessage = "Validation failed: " + error.errors.map(e => e.message).join(", ");
         }
